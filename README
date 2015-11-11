@@ -1,0 +1,8 @@
+To convert a text in UTF8 into speech, follow the following steps in that order
+
+$> perl UTF8toIT3.pl Telugu_PhoneSet_Hts.txt <text.UTF8> <text.IT3> telugu
+$> ./parser <text.IT3> Telugu_PhoneSet_Hts.txt
+$> ./concatenate wordpronunciation syllables Telugu_PhoneSet_Hts.txt
+
+This will create audio file voice.wav which the speech of the given text 
+

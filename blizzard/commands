@@ -1,0 +1,22 @@
+python matrices.py CPS_4/telugu/syl_CPS_SIL/ syllables_telugu 
+python backoff.py seq_syls_RD_SIL2/ ../syllables_telugu ../iiit_hari_tel_phoneset_modified.scm 
+./backoff seq_syls_RD_SIL2/TE_RD_1.syls ../syllables_telugu ../iiit_hari_tel_phoneset_modified.scm out > temp
+gcc backoff.c -o backoff
+python matrices.py CPS_4/gujarathi/syl_modified/ ./CPS_4/gujarathi/syllables_gujarathi 
+python file_names.py ./test_utt/seq_syls_SUS_backoff/
+
+
+
+
+python convert.py syllables_telugu ./test/seq_syls_RD_backoff/
+
+python sil_prediction.py numbered_files/ em_telugu1 trans_telugu
+
+python combine.py numbered_files_SIL_PREDICTED/ test/seq_syls_RD_backoff/ > out
+/usr/local/MATLAB/R2013a/bin/matlab -nodisplay -nojvm -r "hmm('numbered_files/TE_RD_12.syls.num')"
+
+/usr/local/MATLAB/R2013a/bin/matlab -nodisplay -nojvm -r "hmm('numbered_files/TE_RD_58.syls.num', './h58', 'em_telugu1', 'trans_telugu')"
+
+./run.sh
+
+(58, 59, 17, 93, 21, 4, 16, 81, 29)

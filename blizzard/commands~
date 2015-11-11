@@ -1,0 +1,6 @@
+python matrices.py CPS_4/telugu/syl_CPS_SIL/ syllables_telugu 
+python backoff.py seq_syls_RD_SIL2/ ../syllables_telugu ../iiit_hari_tel_phoneset_modified.scm 
+./backoff seq_syls_RD_SIL2/TE_RD_1.syls ../syllables_telugu ../iiit_hari_tel_phoneset_modified.scm out > temp
+gcc backoff.c -o backoff
+python matrices.py CPS_4/gujarathi/syl_modified/ ./CPS_4/gujarathi/syllables_gujarathi 
+python file_names.py ./test_utt/seq_syls_SUS_backoff/
